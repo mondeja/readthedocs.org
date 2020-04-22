@@ -15,11 +15,10 @@ def unresolve(uri):
     like where we want to figure out exactly what file a URL maps to
     """
     parsed = urlparse(uri)
-    rf = RequestFactory()
     domain = parsed.netloc.split(':', 1)[0]
     path = parsed.path
 
-    request = rf.get(path=path, HTTP_HOST=domain)
+    request = RequestFactory().get(path=path, HTTP_HOST=domain)
     project_slug = map_host_to_project_slug(request)
 
     _, __, kwargs = url_resolve(
