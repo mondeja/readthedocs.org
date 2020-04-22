@@ -27,8 +27,10 @@ def unresolve(uri):
         urlconf='readthedocs.proxito.urls',
     )
 
+    # TODO: support external builds
     # mixin = ServeDocsMixin()
     # version_slug = mixin.get_version_from_host(request, version_slug)
+
     final_project, lang_slug, version_slug, filename = _get_project_data_from_request(  # noqa
         request,
         project_slug=project_slug,
